@@ -4,7 +4,7 @@ export function request(config) {
   //1、创建Axios的实例
   const instance = Axios.create({
     //公共url前缀(接口)
-    baseURL: 'http://152.136.185.210:8000/api/z8',
+    baseURL: 'http://152.136.185.210:8000/api/w6',
     //超时时间
     timeout: 10000
   })

@@ -83,7 +83,7 @@ export default {
     //mapActions辅助函数仅仅是将store中的Actions映射到局部methods
     ...mapActions(['addShoppingCartGoods']),
     imageLoad() {
-      //1)使用mixin中的保存的防抖动函数
+      //1)使用mixin中的保存的防抖动函数刷新页面
       this.mixinRefresh()
 
       //2)每张图片加载完后调用getThemeTopY赋值
@@ -167,7 +167,7 @@ export default {
       }
       //7)保存购物车信息
       this.ShoppingCartInfo = data.skuInfo
-
+      // console.log(data.skuInfo)
       this.getThemeTopY = debounce(() => {
         this.themeTopYs = []
         this.themeTopYs.push(0)

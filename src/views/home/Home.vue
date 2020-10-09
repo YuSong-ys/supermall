@@ -43,7 +43,7 @@ import GoodsList from 'components/content/goods/GoodsList'
 import BackTop from 'components/common/backTop/BackTop'
 import Scroll from 'components/common/scroll/Scroll'
 
-import { itemImgListenerMixin } from 'common/mixin'
+import { itemImgListenerMixin, backTopMixin } from 'common/mixin'
 // import { debounce } from 'common/util'
 
 export default {
@@ -74,8 +74,9 @@ export default {
       saveY: 0
     }
   },
-  mixins: [itemImgListenerMixin],
+  mixins: [itemImgListenerMixin, backTopMixin],
   computed: {
+    //商品列表展示的数据，根据点击tabbar传过来的currentType值确定传递哪一部分的数据
     showGoods() {
       return this.goods[this.currentType].list
     }
@@ -103,6 +104,7 @@ export default {
       }
     },
     ContentScroll(position) {
+      //判断返回顶部是否显示
       this.isShowBackTop = -position.y > 1000
       //3)、判断tabControl是否需要吸顶显示
       this.isTabFixed = this.tabOffsetTop <= -position.y
@@ -137,7 +139,7 @@ export default {
     //1.请求多个数据
     this.getHomeMultidata()
 
-    //2、请求商品数据
+    //2、请求商品数据，在最开始就把三页的数据都请求过来了
     this.getHomeGoods('pop')
     this.getHomeGoods('new')
     this.getHomeGoods('sell')

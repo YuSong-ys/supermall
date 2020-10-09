@@ -49,4 +49,8 @@ const router = new Vuerouter({
   routes,
   mode: 'history'
 })
+router.beforeEach((to, from, next) => {
+  document.title = to.matched[0].meta.title //给目标路由的页面的title赋值
+  next() //必须调用，不调用不会跳转
+})
 export default router

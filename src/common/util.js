@@ -1,4 +1,4 @@
-//防抖函数
+//防抖函数，原理：传入一个函数，通过定时器setTimeout来控制函数的调用次数
 export function debounce(func, delay) {
   let timer = null
   return function(...args) {
